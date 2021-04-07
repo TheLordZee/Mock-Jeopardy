@@ -1,0 +1,61 @@
+/* some colors you may find useful:
+  #115ff4
+  #060ce9
+  #28a200
+  #8d2ab5
+  #74119c
+*/
+
+#game {
+	display: none;
+}
+
+#loading {
+	font-size: 20vw;
+	color: white;
+}
+
+.text {
+	font-family: 'Copse', serif;
+	color: white;
+}
+
+#game td {
+	width: 16vh;
+	height: 16vh;
+	background-color: #060ce9;
+}
+#heading td {
+	height: 8vh;
+	font-size: 3vh;
+}
+
+#body td:hover {
+	background-color: gold;
+}
+
+.question {
+	display: none;
+	width: 16vh;
+	height: 16vh;
+	font-size: 1.5vh;
+	background-color: #060ce9;
+}
+
+.covered {
+	width: 16vh;
+	height: 16vh;
+	display: flex;
+}
+
+.question:hover {
+	background-color: fuchsia;
+}
+
+.answer {
+	display: none;
+	width: 16vh;
+	height: 16vh;
+	font-size: 1.5vh;
+	background-color: #28a200;
+}
