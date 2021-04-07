@@ -17,6 +17,7 @@
 //    },
 //    ...
 //  ] 
+
 function setUp() {
     $('body').append(`
      <div class="container text-center">
@@ -61,7 +62,7 @@ class Game{
             if (this.totalCategories.length === 0) {
                 const promises = []
                 for (let x = 0; x < 5; x++) {
-                    promises.push(axios.get(`http://jservice.io/api/categories?count=100&offset=${x}00`));
+                    promises.push(axios.get(`https://jservice.io/api/categories?count=100&offset=${x}00`));
                 }
                 const fulfilled = await Promise.all(promises);
                 for (let response of fulfilled) {
@@ -84,7 +85,7 @@ class Game{
     } 
     
 
-    /** Return object with data about a category:
+    /** Returns object with data about a category:
      *
      *  Returns { title: "Math", clues: clue-array }
      *
@@ -98,7 +99,7 @@ class Game{
 
     async getCategory(catId) {
         try {
-            const category = await axios.get(`http://jservice.io/api/category?id=${catId}`);
+            const category = await axios.get(`https://jservice.io/api/category?id=${catId}`);
             return category.data;
         } catch (e) {
             alert('failed to get Category!')
@@ -200,8 +201,6 @@ class Game{
      * */
 
     handleClick(evt) {
-        // console.log(evt.target.tagName);
-        // console.log(evt.target.innerHTML);
         let currSel;
         if (evt.target.tagName === 'I') {
             currSel = evt.target.parentElement;
@@ -210,8 +209,6 @@ class Game{
         } else if (evt.target.tagName === 'DIV') {
             currSel = evt.target;
         }
-
-        //console.log(currSel.id)
         
         if (currSel.classList.contains('covered')) {
             $(`#${currSel.id}`).hide();
@@ -222,7 +219,6 @@ class Game{
             $(`#${currSel.id}`).hide();
             $(`#${currSel.id}-${currSel.id[currSel.id.length - 1]}`).css('display', 'flex');
         }
-        // console.log(currSel.firstElementChild);
     }
 
     /** Wipe the current Jeopardy board, show the loading spinner,
@@ -258,12 +254,4 @@ class Game{
             await this.getCategoryIds();
             await this.fillTable();
     }
-
-    /** On click of start / restart button, set up game. */
-
-    // TODO
-
-    /** On page load, add event handler for clicking clues */
-
-    // TODO
 }
